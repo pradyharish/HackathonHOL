@@ -1,4 +1,4 @@
-!App Modernization Hackathon
+App Modernization Hackathon
 
 Before the Hackathon setup guide
 
