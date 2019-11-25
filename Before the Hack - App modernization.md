@@ -1,14 +1,8 @@
 !App Modernization Hackathon
 
-<div class="MCWHeader1">
-App modernization
-</div>
-
-<div class="MCWHeader2">
 Before the Hackathon setup guide
-</div>
 
-<div class="MCWHeader3">
+<div class="">
 October 2019
 </div>
 
