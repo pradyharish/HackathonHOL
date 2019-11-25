@@ -1,0 +1,104 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Web\\Contoso.Web.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Azure\\Contoso.Azure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Azure\\Contoso.Azure.csproj",
+        "projectName": "Contoso.Azure",
+        "projectPath": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Azure\\Contoso.Azure.csproj",
+        "packagesPath": "C:\\Users\\pradyh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Azure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\pradyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Web\\Contoso.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Web\\Contoso.Web.csproj",
+        "projectName": "Contoso.Web",
+        "projectPath": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Web\\Contoso.Web.csproj",
+        "packagesPath": "C:\\Users\\pradyh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\pradyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Azure\\Contoso.Azure.csproj": {
+                "projectPath": "C:\\Users\\pradyh\\OneDrive - Microsoft\\OCP\\Prad\\PEAT\\Hackathon_Dec19\\lab-files\\src\\Contoso.Azure\\Contoso.Azure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
