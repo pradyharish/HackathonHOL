@@ -486,9 +486,9 @@ In this task, you download and install SQL Server Management Studio (SSMS) on th
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
-5. Next, [download a copy of the GitHub repo for the App modernization Hackathon](https://github.com/microsoft/Hackathon-App-modernization/archive/master.zip).
+5. Next, [download a copy of the files for the App modernization Hackathon](https://github.com/pradyharish/Hackathon_AppModernization/tree/master/lab-files).
 
-6. Extract the download ZIP file to `C:\Hackathon`.
+6. Download the folder (or Extract the download ZIP file) to `C:\Hackathon`.
 
    ![The Extract Compressed Folders dialog is displayed, with `C:\Hackathon` entered into the extraction location.](media/Hackathon-download-extract.png "Extract Compressed ZIP")
 
@@ -533,7 +533,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 In this task, you restore the `ContosoInsurance` database onto the SQL Server 2008 R2 instance using a backup provided by Contoso, Ltd.
 
-1. On the SqlServer2008 VM, download a [backup of the ContosoInsurance database](https://raw.githubusercontent.com/microsoft/Hackathon-App-modernization/master/Hackathon/lab-files/Database/ContosoInsurance.zip), and extract the zipped files into `C:\ContosoInsurance` on the VM.
+1. On the SqlServer2008 VM, download a [backup of the ContosoInsurance database](https://github.com/pradyharish/Hackathon_AppModernization/blob/master/lab-files/Database/ContosoInsurance.zip), and extract the zipped files into `C:\ContosoInsurance` on the VM.
 
 2. Next, open **Microsoft SQL Server Management Studio** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the results.
 
