@@ -33,7 +33,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Create a service principal](#task-3-create-a-service-principal)
     - [Task 4: Assign the service principal access to Key Vault](#task-4-assign-the-service-principal-access-to-key-vault)
   - [Exercise 4: Deploy Web API into Azure App Services](#exercise-4-deploy-web-api-into-azure-app-services)
-    - [Task 1: Connect to the LabVM](#task-1-connect-to-the-labvm)
+    - [Task 1: Connect to the VM](#task-1-connect-to-the-vm)
     - [Task 2: Open starter solution with Visual Studio](#task-2-open-starter-solution-with-visual-studio)
     - [Task 3: Update Web API to use Key Vault](#task-3-update-web-api-to-use-key-vault)
     - [Task 4: Copy KeyVault configuration section to API App in Azure](#task-4-copy-keyvault-configuration-section-to-api-app-in-azure)
@@ -64,7 +64,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Create a new app](#task-3-create-a-new-app)
     - [Task 4: Design app](#task-4-design-app)
     - [Task 5: Edit the app settings and run the app](#task-5-edit-the-app-settings-and-run-the-app)
-  - [After the hands-on lab](#after-the-hands-on-lab)
+  - [After the Hack](#after-the-hands-on-hack)
     - [Task 1: Delete Azure resource groups](#task-1-delete-azure-resource-groups)
     - [Task 2: Delete the contoso-apps service principal](#task-2-delete-the-contoso-apps-service-principal)
 
@@ -124,7 +124,9 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 > **Note**: There is a known issue with screen resolution when using an RDP connection to Windows Server 2008 R2 which may affect some users. This issue presents itself as very small, hard to read text on the screen. The workaround for this is to use a second monitor for the RDP display, which should allow you to scale up the resolution to make the text larger.
 
+<details>
 Code Reference:
+  <p>
 
     ```sql
     USE master;
@@ -162,7 +164,8 @@ Code Reference:
     ALTER DATABASE ContosoInsurance SET RECOVERY FULL;
     GO
     ```
-
+</p>
+</details>
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
@@ -203,13 +206,13 @@ In this task, you use the Azure Cloud shell to retrieve the IP address of the Sq
 
 Reference:
     ```powershell
-    az vm list-ip-addresses -g hands-on-lab-SUFFIX -n SqlServer2008 --output table
+    az vm list-ip-addresses -g hackathon-SUFFIX -n SqlServer2008 --output table
     ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
     ```powershell
-    az sql server list -g hands-on-lab-SUFFIX
+    az sql server list -g hackathon-SUFFIX
     ```
     Copy the **fullyQualifiedDomainName** value into a text editor for use below.
 
@@ -312,7 +315,7 @@ Reference:
     az account list --output table
     ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account set --subscription <your-subscription-id>` after running the command above to set the appropriate account for the following Azure CLI commands, replacing `<your-subscription-id>` with the appropriate value from the output list above.
+    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account set --subscription <your-subscription-id>` after running the command above to set the appropriate account for the following Azure CLI commands, replacing `<your-subscription-id>` with the appropriate value from the output list above.
 
 Reference:
 
@@ -358,9 +361,9 @@ Duration: 45 minutes
 
 The developers at Contoso have been working toward migrating their apps to the cloud, and they have provided you with a starter solution developed using ASP.NET Core 2.2. As such, most of the pieces are already in place to deploy the apps to Azure, as well as configure them to communicate with the new app services. Since the required services have already been provisioned, what remains is to integrate Azure Key Vault into the API, apply application-level configuration settings, and then deploy the apps from the Visual Studio starter solution. In this task, you apply application settings to the Web API using the Azure Portal. Once the application settings have been set, you deploy the Web App and API App into Azure from Visual Studio.
 
-### Task 1: Connect to the LabVM
+### Task 1: Connect to the VM
 
-In this task, you open an RDP connection to the LabVM, and downloading a copy of the starter solution provided by Contoso. The application deployments are handled using Visual Studio 2019, installed on the LabVM.
+In this task, you open an RDP connection to the VM, and downloading a copy of the starter solution provided by Contoso. The application deployments are handled using Visual Studio 2019, installed on the VM.
 
 Reference:
 
@@ -426,7 +429,7 @@ Reference:
     az webapp list -g <your-resource-group-name> --output table
     ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hackathon is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 Reference:
 
@@ -457,7 +460,7 @@ In this task, you create a new blob container in your storage account for the sc
 
 ### Task 2: Create a SAS token
 
-In this task, you generate a shared access signature (SAS) token for your storage account. This is used later in the lab to allow your Azure Function to retrieve files from the `policies` storage account container.
+In this task, you generate a shared access signature (SAS) token for your storage account. This is used later in the hack to allow your Azure Function to retrieve files from the `policies` storage account container.
 
 
 
@@ -498,7 +501,7 @@ Reference:
     az functionapp list -g <your-resource-group-name> --output table
     ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 
     ```powershell
@@ -577,7 +580,7 @@ Reference:
     az functionapp list -g <your-resource-group-name> --output table
    ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hackathon is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 Reference: 
 
@@ -770,7 +773,7 @@ Since creating mobile apps is a long development cycle, Contoso is interested in
 
 3. Download and install **PowerApps Studio** from the Microsoft store: <https://www.microsoft.com/en-us/store/p/powerapps/9nblggh5z8f3>.
 
-> **Note**: If you are unable to install PowerApps on the LabVM, you can run install it on your local machine and run the steps for this exercise there.
+> **Note**: If you are unable to install PowerApps on the VM, you can run install it on your local machine and run the steps for this exercise there.
 
 ### Task 2: Create new SQL connection
 
@@ -798,7 +801,7 @@ PowerApps Studio application
 
 Duration: 10 minutes
 
-In this exercise, you de-provision all Azure resources that were created in support of this hands-on lab.
+In this exercise, you de-provision all Azure resources that were created in support of this hack.
 
 ### Task 1: Delete Azure resource groups
 
