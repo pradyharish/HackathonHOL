@@ -486,7 +486,7 @@ In this task, you download and install SQL Server Management Studio (SSMS) on th
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
-5. Next, [download a copy of the files for the App modernization Hackathon](https://github.com/pradyharish/Hackathon_AppModernization/tree/master/lab-files).
+5. Next, [download a copy of the files for the App modernization Hackathon](https://github.com/pradyharish/Hackathon_AppModernization/blob/master/lab-files.zip).
 
 6. Download the folder (or Extract the download ZIP file) to `C:\Hackathon`.
 
