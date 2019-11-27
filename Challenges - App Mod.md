@@ -126,6 +126,7 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 <details>
 	<summary>Code Reference:</summary>
+
 ```sql
     USE master;
     GO
