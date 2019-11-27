@@ -124,8 +124,9 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 > **Note**: There is a known issue with screen resolution when using an RDP connection to Windows Server 2008 R2 which may affect some users. This issue presents itself as very small, hard to read text on the screen. The workaround for this is to use a second monitor for the RDP display, which should allow you to scale up the resolution to make the text larger.
 
-<details><summary>
-  Code Reference:</summary>
+
+  Code Reference:
+  
     ```sql
     USE master;
     GO
@@ -162,7 +163,7 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
     ALTER DATABASE ContosoInsurance SET RECOVERY FULL;
     GO
     ```
-</details>
+
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
@@ -170,24 +171,24 @@ Contoso would like an assessment to see what potential issues they might need to
 
 > **Note**: The Database Migration Assistant has already been installed on your SqlServer2008 VM. It can also be downloaded from the [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=53595).
 
-<details><summary>
-  Reference: </summary>
-  <p>
+
+  Reference: 
+  
    - **Username**: Enter **WorkshopUser**
    - **Password**: Enter **Password.1!!**
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
   
 > The DMA assessment for a migrating the `ContosoInsurance` database to a target platform of Azure SQL DB reveals that there are no issues or features preventing Contoso from migrating their database to Azure SQL DB. You can select **Export Assessment** at the top right to save the report as a JSON file, if desired.
-</p></details>
+
 
 ### Task 3: Migrate the database schema using the Data Migration Assistant
 
 After you have reviewed the assessment results and you have ensured the database is a candidate for migration to Azure SQL Database, use the Data Migration Assistant to migrate the schema to Azure SQL Database.
 
-<details><summary>
-  Reference (source):</summary>
-  <p>
+
+  Reference (source):
+  
    - **Username**: Enter **WorkshopUser**
    - **Password**: Enter **Password.1!!**
 
@@ -201,26 +202,26 @@ Reference (SSMS):
     - **Username**: Enter **demouser**
     - **Password**: Enter **Password.1!!**
     - **Remember password**: Check this box.
-</p></details>
+
 
 ### Task 4: Retrieve SQL Server 2008 VM IP address
 
 In this task, you use the Azure Cloud shell to retrieve the IP address of the SqlServer2008 VM, which is needed to connect to your SqlServer2008 VM from DMS.
 
-<details><summary>
-  Reference:</summary>
-  <p>
+
+  Reference:
+  
     ```powershell
     az vm list-ip-addresses -g hackathon-SUFFIX -n SqlServer2008 --output table
     ```
 
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
-
+	
     ```powershell
     az sql server list -g hackathon-SUFFIX
     ```
     Copy the **fullyQualifiedDomainName** value into a text editor for use below.
-</p></details>
+
 
 ### Task 5: Migrate the database using the Azure Database Migration Service
 
@@ -315,30 +316,28 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 
 > **Important**: You must have rights within your Azure AD tenant to create applications and assign roles to complete this task.
 
-<details><summary>
-  Reference: </summary>
-  <p>
+
+  Reference: 
+  
 
     ```powershell
     az account list --output table
     ```
 
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account set --subscription <your-subscription-id>` after running the command above to set the appropriate account for the following Azure CLI commands, replacing `<your-subscription-id>` with the appropriate value from the output list above.
-</p></details>
 
-<details><summary>
-  Reference: </summary>
-  <p>
+
+
+  Reference: 
+  
 
     ```powershell
     $subscriptionId = "<your-subscription-id>"
     $resourceGroup = "<your-resource-group-name>"
     az ad sp create-for-rbac -n "contoso-apps" --role reader --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
     ```
-</p></details>
-<details><summary>
-  Reference:</summary>
-  <p>
+  Reference:
+  
 
     ```json
     {
@@ -351,15 +350,14 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
     ```
 
     > **Important**: Make sure you copy the output into a text editor, as the Azure Cloud Shell session eventually times out, and you won't have access to the output. The `appId` is used in the steps below to assign an access policy to Key Vault, and both the `appId` and `password` are used in the next exercise to add the configuration values to the web and API apps to allow them to read secrets from Key Vault.
-</p></details>
+
 
 ### Task 4: Assign the service principal access to Key Vault
 
 In this task, you assign the service principal you created above to a reader role on your resource group and add an access policy to Key Vault to allow it to view secrets stored there.
 
-<details><summary>
-  Reference:</summary>
-  <p>
+  Reference:
+  
 
     ```powershell
     az keyvault list -g <your-resource-group-name> --output table
@@ -370,7 +368,6 @@ Reference:
     ```powershell
     az keyvault set-policy -n <your-key-vault-name> --spn http://contoso-apps --secret-permissions get list
     ```
-</p></details>
 
 ## Exercise 4: Deploy Web API into Azure App Services
 
@@ -382,12 +379,11 @@ The developers at Contoso have been working toward migrating their apps to the c
 
 In this task, you open an RDP connection to the VM, and downloading a copy of the starter solution provided by Contoso. The application deployments are handled using Visual Studio 2019, installed on the VM.
 
-<details><summary>
-  Reference: </summary>
-<p>
+  Reference: 
+
    - **Username**: demouser
    - **Password**: Password.1!!
-</p></details>
+
 
 ### Task 2: Open starter solution with Visual Studio
 
@@ -413,9 +409,7 @@ In this task, you update the `Contoso.WebApi` project to use Azure Key Vault for
 
 Before deploying the Web API to Azure, you need to add the required application settings into the configuration for the Azure API App. In this task, you use the advanced configuration editor in your API App to add in the configuration settings required to connect to and retrieve secrets from Key Vault.
 
-<details><summary>
-  Reference:</summary>
-  <p>
+  Reference:
 
     ```json
     [
@@ -433,15 +427,14 @@ Before deploying the Web API to Azure, you need to add the required application 
         }
     ]
     ```
-</p></details>
+
 
 ### Task 5: Deploy the API to Azure
 
 In this task, you use Visual Studio to deploy the API project into an API App in Azure.
 
-<details><summary>
-  Reference: </summary>
-  <p>
+  Reference: 
+  
 To validate the API App is function property, add `/swagger` to the end of the URL in your browser's address bar (e.g., <https://contoso-api-jjbp34uowoybc.azurewebsites.net/swagger/>). This brings up the Swagger UI page of your API, which displays a list of the available API endpoints.
 
     > **Note**: [Swagger UI](https://swagger.io/tools/swagger-ui/) automatically generates visual documentation for REST APIs following the OpenAPI Specification. It makes it easy for developers to visualize and interact with the API's endpoints without having any of the implementation logic in place.
@@ -462,7 +455,7 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "ApiUrl=https://$defaultHostName"
     ```
-</p></details>
+
 
 ### Task 2: Deploy web application to Azure
 
@@ -491,9 +484,8 @@ In this task, you generate a shared access signature (SAS) token for your storag
 
 In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy). You then use AzCopy to copy the PDF files from the "on-premises" location into the policies container in Azure storage.
 
-<details><summary>
-  Reference:</summary>
-  <p>
+  Reference:
+  
 <https://aka.ms/downloadazcopy>.
 
 `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy` (On a 32-bit machine, change `Program Files (x86)` to `Program Files` ).
@@ -509,7 +501,7 @@ In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us
     ```bash
     AzCopy /Source:"C:\.\.\....\lab-files\policy-documents" /Dest:"https://contosojt7yc3zphxfda.blob.core.windows.net/policies" /DestKey:"XJT3us2KT1WQHAQBbeotrRCWQLZayFDNmhLHt3vl2miKOHeXasB7IUlw2+y4afH6R/03wbTiRK9SRqGXt9JVqQ==" /S
     ```
-</p></details>
+
 
 ## Exercise 7: Create serverless API for accessing PDFs
 
@@ -521,9 +513,8 @@ Contoso has made some updates to prepare their applications, but there are some 
 
 In this task, you prepare your Azure Function App to work with your new Function by adding your storage account policies container URL and SAS token values to the Application Settings of your Function App, using the Azure Cloud Shell and Azure CLI.
 
-<details><summary>
-  Reference:</summary>
-  <p>
+  Reference:
+  
 
     ```powershell
     az functionapp list -g <your-resource-group-name> --output table
@@ -539,7 +530,7 @@ In this task, you prepare your Azure Function App to work with your new Function
     $storageSas = "<your-storage-account-sas-token>"
     az functionapp config appsettings set -n $functionAppName -g $resourceGroup --settings "PolicyStorageUrl=$storageUrl" "PolicyStorageSas=$storageSas"
     ```
-</p></details>
+
 
 ### Task 2: Add project environment variables
 
@@ -553,9 +544,8 @@ In this task, you create some environment variables on your VM, which allows for
 
 In this task, you use Visual Studio to create an Azure Function. This Function serves as a serverless API for retrieving policy documents from Blob storage.
 
-<details><summary>
-  Reference:</summary>
-  <p>
+  Reference:
+  
 
     ```csharp
     [FunctionName("PolicyDocs")]
@@ -573,7 +563,7 @@ Reference
 
     > **Note**: When the API is deployed to an Azure API App, `Environment.GetEnvironmentVariables()` looks for the specified values in the configured application settings.
 
-</p></details>
+
 
 ### Task 4: Test the function locally
 
@@ -581,9 +571,8 @@ In this task, you run your Function locally through the Visual Studio debugger, 
 
 > **IMPORTANT**: Internet Explorer on Windows Server 2008 R2 does not include functionality to open PDF documents. To view the downloaded policy documents in this task, you need to [download and install the Chrome browser](https://www.google.com/chrome/) on your VM.
 
-<details><summary>
-  Reference: </summary>
-  <p>
+  Reference: 
+  
 
     ```http
     http://localhost:7071/api/policies/{policyHolder}/{policyNumber}
@@ -593,7 +582,7 @@ In this task, you run your Function locally through the Visual Studio debugger, 
     ```http
     http://localhost:7071/api/policies/Acevedo/ACE5605VZZ2ACQ
     ```
-</p></details>
+
 
 ### Task 5: Deploy the function to your Azure Function App
 
@@ -609,9 +598,8 @@ In this task, you add Application Insights to your Function App in the Azure Por
 
 In this task, you add the URL of your Azure Function App to the Application settings configuration of your Web App.
 
-<details><summary>
-  Reference: </summary>
-  <p>
+  Reference: 
+  
 
     ```powershell
     az functionapp list -g <your-resource-group-name> --output table
@@ -634,7 +622,7 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "PolicyDocumentsPath=https://$defaultHostName/api/policies/{policyHolder}/{policyNumber}?code=$defaultHostKey"
     ```
-</p></details>
+
 
 ### Task 8: Test document retrieval from web app
 
@@ -657,9 +645,8 @@ Contoso has requested the ability to perform full-text searching on policy docum
 
 In this task, you run a query against your search index to review the enrichments added by cognitive search to policy documents.
 
-<details><summary>
-Reference: </summary>
-<p>
+Reference: 
+
 
    ```json
    {
@@ -731,7 +718,7 @@ Reference:
         "metadata_title": "Your Policy"
    }
    ```
-</p></details>
+
 
 ## Exercise 8: Import and publish APIs into APIM
 
@@ -743,9 +730,8 @@ In this exercise, you publish your API App and Function App API endpoints throug
 
 In this task, you import your API App into APIM, using the OpenAPI specification, which leverages the Swagger definition associated with your API app.
 
-<details><summary>
-  Reference: </summary>
-  <p>
+  Reference: 
+  
 <https://contoso-api-jt7yc3zphxfda.azurewebsites.net/swagger>).
 
 Reference: 
@@ -768,7 +754,7 @@ Reference:
 
     > **Note**: The policy added above is for handling cross-origin resource sharing (CORS). If you are testing the web app locally, you need to add another `<origin></origin>` tag within `<allowed-origins></allowed-origins>` that contains `https://localhost:<port-number>`, where `<port-number>` is the port assigned by your debugger (as is shown in the screenshot above).
 
-</p></details>
+
 
 ### Task 2: Import Function App
 
@@ -784,9 +770,8 @@ In this task, you quickly look at the APIs in the Developer Portal, and retrieve
 
 In this task, you use the Azure Cloud Shell and Azure CLI to update the `ApiUrl` and `PolicyDocumentsPath` settings for the PolicyConnect Web App. You also add a new setting for the APIM access key.
 
-<details><summary>
-  Reference: </summary>
-  <p>
+  Reference: 
+  
 
     ```powershell
     az webapp list -g <your-resource-group-name> --output table
@@ -802,7 +787,7 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "PolicyDocumentsPath=$policyDocsPath" "ApiUrl=$apimUrl" "ApimSubscriptionKey=$apimKey"
     ```
-</p></details>
+
 
 ## Exercise 9: Create an app in PowerApps
 
@@ -822,16 +807,15 @@ Since creating mobile apps is a long development cycle, Contoso is interested in
 
 ### Task 2: Create new SQL connection
 
-<details><summary>
-  Reference: </summary>
-  <p>
+  Reference: 
+  
 
    - **Authentication Type**: Select **SQL Server Authentication**.
    - **SQL Server name**: Enter the server name of your Azure SQL database. For example, `contosoinsurance-jjbp34uowoybc.database.windows.net`.
    - **SQL Database name**: Enter **ContosoInsurance**
    - **Username**: Enter **demouser**
    - **Password**: Enter **Password.1!!**
-</p></details>
+
 
 ### Task 3: Create a new app
 
