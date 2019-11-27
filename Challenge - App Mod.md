@@ -173,19 +173,24 @@ Contoso would like an assessment to see what potential issues they might need to
 
 > **Note**: The Database Migration Assistant has already been installed on your SqlServer2008 VM. It can also be downloaded from the [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=53595).
 
-Reference
+<details><summary>
+  Reference: </summary>
+  <p>
    - **Username**: Enter **WorkshopUser**
    - **Password**: Enter **Password.1!!**
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
-
+  
 > The DMA assessment for a migrating the `ContosoInsurance` database to a target platform of Azure SQL DB reveals that there are no issues or features preventing Contoso from migrating their database to Azure SQL DB. You can select **Export Assessment** at the top right to save the report as a JSON file, if desired.
+</p></details>
 
 ### Task 3: Migrate the database schema using the Data Migration Assistant
 
 After you have reviewed the assessment results and you have ensured the database is a candidate for migration to Azure SQL Database, use the Data Migration Assistant to migrate the schema to Azure SQL Database.
 
-Reference (source):
+<details><summary>
+  Reference (source):</summary>
+  <p>
    - **Username**: Enter **WorkshopUser**
    - **Password**: Enter **Password.1!!**
 
@@ -199,6 +204,7 @@ Reference (SSMS):
     - **Username**: Enter **demouser**
     - **Password**: Enter **Password.1!!**
     - **Remember password**: Check this box.
+</p></details>
 
 ### Task 4: Retrieve SQL Server 2008 VM IP address
 
