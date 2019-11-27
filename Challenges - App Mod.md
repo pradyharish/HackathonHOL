@@ -172,7 +172,8 @@ Contoso would like an assessment to see what potential issues they might need to
 > **Note**: The Database Migration Assistant has already been installed on your SqlServer2008 VM. It can also be downloaded from the [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=53595).
 
 
-  Reference: 
+<details>
+	<summary>Reference: </summary>
   
    - **Username**: Enter **WorkshopUser**
    - **Password**: Enter **Password.1!!**
@@ -180,6 +181,8 @@ Contoso would like an assessment to see what potential issues they might need to
    - **Trust server certificate**: Check this box.
   
 > The DMA assessment for a migrating the `ContosoInsurance` database to a target platform of Azure SQL DB reveals that there are no issues or features preventing Contoso from migrating their database to Azure SQL DB. You can select **Export Assessment** at the top right to save the report as a JSON file, if desired.
+
+</details>
 
 
 ### Task 3: Migrate the database schema using the Data Migration Assistant
