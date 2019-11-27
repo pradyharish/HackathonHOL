@@ -126,7 +126,6 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 <details><summary>
   Code Reference:</summary>
-  <p>
     ```sql
     USE master;
     GO
@@ -163,7 +162,7 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
     ALTER DATABASE ContosoInsurance SET RECOVERY FULL;
     GO
     ```
-</p></details>
+</details>
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
