@@ -125,8 +125,7 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 > **Note**: There is a known issue with screen resolution when using an RDP connection to Windows Server 2008 R2 which may affect some users. This issue presents itself as very small, hard to read text on the screen. The workaround for this is to use a second monitor for the RDP display, which should allow you to scale up the resolution to make the text larger.
 
   Code Reference:
-  
-    ```sql
+```sql
     USE master;
     GO
 
@@ -161,7 +160,7 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
     -- Update the recovery model of the database to FULL
     ALTER DATABASE ContosoInsurance SET RECOVERY FULL;
     GO
-    ```
+```
 
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
