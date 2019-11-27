@@ -124,7 +124,6 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 > **Note**: There is a known issue with screen resolution when using an RDP connection to Windows Server 2008 R2 which may affect some users. This issue presents itself as very small, hard to read text on the screen. The workaround for this is to use a second monitor for the RDP display, which should allow you to scale up the resolution to make the text larger.
 
-
   Code Reference:
   
     ```sql
@@ -283,7 +282,7 @@ Reference (Query):
    CREATE USER DDMUser WITHOUT LOGIN;
    GRANT SELECT ON [dbo].[people] TO DDMUser;
    ```
-
+Reference:
     ```sql
     USE [ContosoInsurance];
     GO
@@ -317,9 +316,7 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 > **Important**: You must have rights within your Azure AD tenant to create applications and assign roles to complete this task.
 
 
-  Reference: 
-  
-
+  Reference:
     ```powershell
     az account list --output table
     ```
@@ -329,16 +326,12 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 
 
   Reference: 
-  
-
-    ```powershell
+  ```powershell
     $subscriptionId = "<your-subscription-id>"
     $resourceGroup = "<your-resource-group-name>"
     az ad sp create-for-rbac -n "contoso-apps" --role reader --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
-    ```
+  ```
   Reference:
-  
-
     ```json
     {
         "appId": "94ee2739-794b-4038-a378-573a5f52918c",
@@ -357,14 +350,11 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 In this task, you assign the service principal you created above to a reader role on your resource group and add an access policy to Key Vault to allow it to view secrets stored there.
 
   Reference:
-  
-
     ```powershell
     az keyvault list -g <your-resource-group-name> --output table
     ```
 
 Reference:
-
     ```powershell
     az keyvault set-policy -n <your-key-vault-name> --spn http://contoso-apps --secret-permissions get list
     ```
@@ -410,7 +400,6 @@ In this task, you update the `Contoso.WebApi` project to use Azure Key Vault for
 Before deploying the Web API to Azure, you need to add the required application settings into the configuration for the Azure API App. In this task, you use the advanced configuration editor in your API App to add in the configuration settings required to connect to and retrieve secrets from Key Vault.
 
   Reference:
-
     ```json
     [
         {
@@ -440,7 +429,6 @@ To validate the API App is function property, add `/swagger` to the end of the U
     > **Note**: [Swagger UI](https://swagger.io/tools/swagger-ui/) automatically generates visual documentation for REST APIs following the OpenAPI Specification. It makes it easy for developers to visualize and interact with the API's endpoints without having any of the implementation logic in place.
 
 Reference:
-
     ```powershell
     az webapp list -g <your-resource-group-name> --output table
     ```
@@ -448,7 +436,6 @@ Reference:
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hackathon is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 Reference:
-
     ```powershell
     $webAppName = "<your-web-app-name>"
     $defaultHostName = "<your-api-default-host-name>"
@@ -493,15 +480,15 @@ In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us
    ```bash
    cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
    ```
-
+.
    ```bash
    AzCopy /Source:"[FILE-SOURCE]" /Dest:"[STORAGE-CONTAINER-URL]" /DestKey:"[STORAGE-ACCOUNT-KEY]" /S
    ```
-
+.
     ```bash
     AzCopy /Source:"C:\.\.\....\lab-files\policy-documents" /Dest:"https://contosojt7yc3zphxfda.blob.core.windows.net/policies" /DestKey:"XJT3us2KT1WQHAQBbeotrRCWQLZayFDNmhLHt3vl2miKOHeXasB7IUlw2+y4afH6R/03wbTiRK9SRqGXt9JVqQ==" /S
     ```
-
+.
 
 ## Exercise 7: Create serverless API for accessing PDFs
 
@@ -514,15 +501,12 @@ Contoso has made some updates to prepare their applications, but there are some 
 In this task, you prepare your Azure Function App to work with your new Function by adding your storage account policies container URL and SAS token values to the Application Settings of your Function App, using the Azure Cloud Shell and Azure CLI.
 
   Reference:
-  
-
     ```powershell
     az functionapp list -g <your-resource-group-name> --output table
     ```
 
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
-
-
+.
     ```powershell
     $functionAppName = "<your-function-app-name>"
     $resourceGroup = "<your-resource-group-name>"
@@ -530,7 +514,6 @@ In this task, you prepare your Azure Function App to work with your new Function
     $storageSas = "<your-storage-account-sas-token>"
     az functionapp config appsettings set -n $functionAppName -g $resourceGroup --settings "PolicyStorageUrl=$storageUrl" "PolicyStorageSas=$storageSas"
     ```
-
 
 ### Task 2: Add project environment variables
 
@@ -545,16 +528,12 @@ In this task, you create some environment variables on your VM, which allows for
 In this task, you use Visual Studio to create an Azure Function. This Function serves as a serverless API for retrieving policy documents from Blob storage.
 
   Reference:
-  
-
     ```csharp
     [FunctionName("PolicyDocs")]
         public static async Task<IActionResult> Run(
                 [HttpTrigger(AuthorizationLevel.Function, "get", Route = "policies/{policyHolder}/{policyNumber}")] HttpRequest req, string policyHolder, string policyNumber, ILogger log)
     ```
-
     > **Note**: Notice that in the code you removed `"post"` from the list of acceptable verbs, and then updated the Route of the HttpTrigger from `null` to `policies/{policyHolder}/{policyNumber}`. This allows for the function to be parameterized. You then added `string` parameters to the Run method to allow those parameters to be received and used within the function.
-
 Reference
     ```csharp
     var containerUri = Environment.GetEnvironmentVariable("PolicyStorageUrl");
@@ -563,8 +542,6 @@ Reference
 
     > **Note**: When the API is deployed to an Azure API App, `Environment.GetEnvironmentVariables()` looks for the specified values in the configured application settings.
 
-
-
 ### Task 4: Test the function locally
 
 In this task, you run your Function locally through the Visual Studio debugger, to verify that it is properly configured and able to retrieve documents from the `policy` container in your Storage account.
@@ -572,13 +549,10 @@ In this task, you run your Function locally through the Visual Studio debugger, 
 > **IMPORTANT**: Internet Explorer on Windows Server 2008 R2 does not include functionality to open PDF documents. To view the downloaded policy documents in this task, you need to [download and install the Chrome browser](https://www.google.com/chrome/) on your VM.
 
   Reference: 
-  
-
     ```http
     http://localhost:7071/api/policies/{policyHolder}/{policyNumber}
     ```
-
-
+.
     ```http
     http://localhost:7071/api/policies/Acevedo/ACE5605VZZ2ACQ
     ```
@@ -599,22 +573,17 @@ In this task, you add Application Insights to your Function App in the Azure Por
 In this task, you add the URL of your Azure Function App to the Application settings configuration of your Web App.
 
   Reference: 
-  
-
     ```powershell
     az functionapp list -g <your-resource-group-name> --output table
    ```
 
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hackathon is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
-Reference: 
-
+Reference:
     ```powershell
     az webapp list -g <your-resource-group-name> --output table
     ```
-
 Reference: 
-
     ```powershell
     $webAppName = "<your-web-app-name>"
     $defaultHostName = "<your-function-app-default-host-name>"
@@ -622,8 +591,6 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "PolicyDocumentsPath=https://$defaultHostName/api/policies/{policyHolder}/{policyNumber}?code=$defaultHostKey"
     ```
-
-
 ### Task 8: Test document retrieval from web app
 
 In this task, you open the PolicyConnect web app and download a policy document. Recall from above that this resulted in a page not found error when you tried it previously.
@@ -646,8 +613,6 @@ Contoso has requested the ability to perform full-text searching on policy docum
 In this task, you run a query against your search index to review the enrichments added by cognitive search to policy documents.
 
 Reference: 
-
-
    ```json
    {
         "@search.score": 1,
@@ -701,7 +666,6 @@ Reference:
    ```
 
 Reference: 
-
    ```json
    {
         "@search.score": 1,
@@ -718,7 +682,6 @@ Reference:
         "metadata_title": "Your Policy"
    }
    ```
-
 
 ## Exercise 8: Import and publish APIs into APIM
 
