@@ -190,8 +190,8 @@ Contoso would like an assessment to see what potential issues they might need to
 After you have reviewed the assessment results and you have ensured the database is a candidate for migration to Azure SQL Database, use the Data Migration Assistant to migrate the schema to Azure SQL Database.
 
 <details>
-	<summary>Reference (source): </summary>
-
+	<summary>Reference: </summary>
+Source:
 - **Username**: Enter **WorkshopUser**
 - **Password**: Enter **Password.1!!**
 
@@ -213,8 +213,9 @@ SSMS:
 In this task, you use the Azure Cloud shell to retrieve the IP address of the SqlServer2008 VM, which is needed to connect to your SqlServer2008 VM from DMS.
 
 
-  Reference:
-  
+<details>
+	<summary>Reference:</summary>
+
 ```powershell
     az vm list-ip-addresses -g hackathon-SUFFIX -n SqlServer2008 --output table
 ```
@@ -225,6 +226,7 @@ In this task, you use the Azure Cloud shell to retrieve the IP address of the Sq
     az sql server list -g hackathon-SUFFIX
 ```
 Copy the **fullyQualifiedDomainName** value into a text editor for use below.
+</details>
 
 
 ### Task 5: Migrate the database using the Azure Database Migration Service
