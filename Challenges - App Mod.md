@@ -209,15 +209,15 @@ In this task, you use the Azure Cloud shell to retrieve the IP address of the Sq
 
   Reference:
   
-    ```powershell
+```powershell
     az vm list-ip-addresses -g hackathon-SUFFIX -n SqlServer2008 --output table
-    ```
+```
 
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 	
-    ```powershell
+```powershell
     az sql server list -g hackathon-SUFFIX
-    ```
+```
     Copy the **fullyQualifiedDomainName** value into a text editor for use below.
 
 
