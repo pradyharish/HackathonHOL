@@ -189,21 +189,23 @@ Contoso would like an assessment to see what potential issues they might need to
 
 After you have reviewed the assessment results and you have ensured the database is a candidate for migration to Azure SQL Database, use the Data Migration Assistant to migrate the schema to Azure SQL Database.
 
+<details>
+	<summary>Reference (source): </summary>
 
-  Reference (source):
 - **Username**: Enter **WorkshopUser**
 - **Password**: Enter **Password.1!!**
 
-Reference (target):
+Target:
 - **Username**: Enter **demouser**
 - **Password**: Enter **Password.1!!**
 
-Reference (SSMS):
+SSMS:
 - **Server name**: Paste the server name of your Azure SQL Database you copied above.
 - **Authentication type**: Select SQL Server Authentication.
 - **Username**: Enter **demouser**
 - **Password**: Enter **Password.1!!**
 - **Remember password**: Check this box.
+</details>
 
 
 ### Task 4: Retrieve SQL Server 2008 VM IP address
