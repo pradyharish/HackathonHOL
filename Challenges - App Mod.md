@@ -186,20 +186,19 @@ After you have reviewed the assessment results and you have ensured the database
 
 
   Reference (source):
-  
-   - **Username**: Enter **WorkshopUser**
-   - **Password**: Enter **Password.1!!**
+- **Username**: Enter **WorkshopUser**
+- **Password**: Enter **Password.1!!**
 
 Reference (target):
-   - **Username**: Enter **demouser**
-   - **Password**: Enter **Password.1!!**
+- **Username**: Enter **demouser**
+- **Password**: Enter **Password.1!!**
 
 Reference (SSMS):
-    - **Server name**: Paste the server name of your Azure SQL Database you copied above.
-    - **Authentication type**: Select SQL Server Authentication.
-    - **Username**: Enter **demouser**
-    - **Password**: Enter **Password.1!!**
-    - **Remember password**: Check this box.
+- **Server name**: Paste the server name of your Azure SQL Database you copied above.
+- **Authentication type**: Select SQL Server Authentication.
+- **Username**: Enter **demouser**
+- **Password**: Enter **Password.1!!**
+- **Remember password**: Check this box.
 
 
 ### Task 4: Retrieve SQL Server 2008 VM IP address
@@ -228,15 +227,14 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 > The [Azure Database Migration Service](https://docs.microsoft.com/en-us/azure/dms/dms-overview) integrates some of the functionality of Microsoft existing tools and services to provide customers with a comprehensive, highly available database migration solution. The service uses the Data Migration Assistant to generate assessment reports that provide recommendations to guide you through the changes required prior to performing a migration. When you're ready to begin the migration process, Azure Database Migration Service performs all of the required steps.
 
 Reference (source):
-
-    - **Username**: Enter **WorkshopUser**
-    - **Password**: Enter **Password.1!!**
-    - **Connection properties**: Check both Encrypt connection and Trust server certificate.
+- **Username**: Enter **WorkshopUser**
+- **Password**: Enter **Password.1!!**
+- **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
 Reference (target):
-    - **Username**: Enter **demouser**
-    - **Password**: Enter **Password.1!!**
-    - **Connection properties**: Check Encrypt connection.
+- **Username**: Enter **demouser**
+- **Password**: Enter **Password.1!!**
+- **Connection properties**: Check Encrypt connection.
 
 
 - **Activity name**: Enter ContosoDataMigration.
@@ -267,11 +265,11 @@ In this task, you enable [Dynamic Data Masking](https://docs.microsoft.com/sql/r
 > For example, a service representative at a call center may identify callers by several digits of their credit card number, but those data items should not be fully exposed to the service representative. A masking rule can be defined that masks all but the last four digits of any credit card number in the result set of any query. As another example, an appropriate data mask can be defined to protect personally identifiable information (PII) data, so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
 
 Reference (DB Engine):
-    - **Server name**: Paste the server name of your Azure SQL Database, as you've done previously.
-    - **Authentication type**: Select SQL Server Authentication.
-    - **Username**: Enter **demouser**
-    - **Password**: Enter **Password.1!!**
-    - **Remember password**: Check this box.
+- **Server name**: Paste the server name of your Azure SQL Database, as you've done previously.
+- **Authentication type**: Select SQL Server Authentication.
+- **Username**: Enter **demouser**
+- **Password**: Enter **Password.1!!**
+- **Remember password**: Check this box.
 
 Reference (Query):
 ```sql
@@ -320,7 +318,7 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
     az account list --output table
 ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account set --subscription <your-subscription-id>` after running the command above to set the appropriate account for the following Azure CLI commands, replacing `<your-subscription-id>` with the appropriate value from the output list above.
+> **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account set --subscription <your-subscription-id>` after running the command above to set the appropriate account for the following Azure CLI commands, replacing `<your-subscription-id>` with the appropriate value from the output list above.
 
 
 
@@ -341,7 +339,7 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
     }
 ```
 
-    > **Important**: Make sure you copy the output into a text editor, as the Azure Cloud Shell session eventually times out, and you won't have access to the output. The `appId` is used in the steps below to assign an access policy to Key Vault, and both the `appId` and `password` are used in the next exercise to add the configuration values to the web and API apps to allow them to read secrets from Key Vault.
+> **Important**: Make sure you copy the output into a text editor, as the Azure Cloud Shell session eventually times out, and you won't have access to the output. The `appId` is used in the steps below to assign an access policy to Key Vault, and both the `appId` and `password` are used in the next exercise to add the configuration values to the web and API apps to allow them to read secrets from Key Vault.
 
 
 ### Task 4: Assign the service principal access to Key Vault
@@ -370,8 +368,8 @@ In this task, you open an RDP connection to the VM, and downloading a copy of th
 
   Reference: 
 
-   - **Username**: demouser
-   - **Password**: Password.1!!
+- **Username**: demouser
+- **Password**: Password.1!!
 
 
 ### Task 2: Open starter solution with Visual Studio
@@ -432,7 +430,7 @@ Reference:
     az webapp list -g <your-resource-group-name> --output table
 ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hackathon is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+> **Note**: If you have multiple Azure subscriptions, and the account you are using for this hackathon is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 Reference:
 ```powershell
@@ -463,7 +461,6 @@ In this task, you create a new blob container in your storage account for the sc
 ### Task 2: Create a SAS token
 
 In this task, you generate a shared access signature (SAS) token for your storage account. This is used later in the hack to allow your Azure Function to retrieve files from the `policies` storage account container.
-
 
 
 ### Task 3: Bulk upload PDFs to blob storage using AzCopy
@@ -499,12 +496,12 @@ Contoso has made some updates to prepare their applications, but there are some 
 
 In this task, you prepare your Azure Function App to work with your new Function by adding your storage account policies container URL and SAS token values to the Application Settings of your Function App, using the Azure Cloud Shell and Azure CLI.
 
-  Reference:
+Reference:
 ```powershell
     az functionapp list -g <your-resource-group-name> --output table
 ```
 
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+> **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this hack, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 ```powershell
     $functionAppName = "<your-function-app-name>"
@@ -520,13 +517,11 @@ Functions use environment variables to retrieve configuration settings. To test 
 
 In this task, you create some environment variables on your VM, which allows for debugging your Function App locally on the VM.
 
-
-
 ### Task 3: Create an Azure Function in Visual Studio
 
 In this task, you use Visual Studio to create an Azure Function. This Function serves as a serverless API for retrieving policy documents from Blob storage.
 
-  Reference:
+Reference:
 ```csharp
     [FunctionName("PolicyDocs")]
         public static async Task<IActionResult> Run(
@@ -551,7 +546,7 @@ In this task, you run your Function locally through the Visual Studio debugger, 
 ```http
     http://localhost:7071/api/policies/{policyHolder}/{policyNumber}
 ```
-.
+
 ```http
     http://localhost:7071/api/policies/Acevedo/ACE5605VZZ2ACQ
 ```
@@ -694,7 +689,7 @@ In this task, you import your API App into APIM, using the OpenAPI specification
 
   Reference: 
   
-<https://contoso-api-jt7yc3zphxfda.azurewebsites.net/swagger>).
+<https://contoso-api-jt7yc3zphxfda.azurewebsites.net/swagger>
 
 Reference: 
 ```xml
@@ -771,11 +766,11 @@ Since creating mobile apps is a long development cycle, Contoso is interested in
   Reference: 
   
 
-   - **Authentication Type**: Select **SQL Server Authentication**.
-   - **SQL Server name**: Enter the server name of your Azure SQL database. For example, `contosoinsurance-jjbp34uowoybc.database.windows.net`.
-   - **SQL Database name**: Enter **ContosoInsurance**
-   - **Username**: Enter **demouser**
-   - **Password**: Enter **Password.1!!**
+- **Authentication Type**: Select **SQL Server Authentication**.
+- **SQL Server name**: Enter the server name of your Azure SQL database. For example, `contosoinsurance-jjbp34uowoybc.database.windows.net`.
+- **SQL Database name**: Enter **ContosoInsurance**
+- **Username**: Enter **demouser**
+- **Password**: Enter **Password.1!!**
 
 
 ### Task 3: Create a new app
