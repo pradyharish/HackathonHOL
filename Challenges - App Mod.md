@@ -214,7 +214,7 @@ In this task, you use the Azure Cloud shell to retrieve the IP address of the Sq
 
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```powershell
     az vm list-ip-addresses -g hackathon-SUFFIX -n SqlServer2008 --output table
@@ -278,7 +278,7 @@ In this task, you enable [Dynamic Data Masking](https://docs.microsoft.com/sql/r
 
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 	
 DB Engine:
 - **Server name**: Paste the server name of your Azure SQL Database, as you've done previously.
@@ -330,7 +330,7 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```powershell
     az account list --output table
@@ -365,7 +365,7 @@ Reference:
 In this task, you assign the service principal you created above to a reader role on your resource group and add an access policy to Key Vault to allow it to view secrets stored there.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 	
 ```powershell
     az keyvault list -g <your-resource-group-name> --output table
@@ -421,7 +421,7 @@ In this task, you update the `Contoso.WebApi` project to use Azure Key Vault for
 Before deploying the Web API to Azure, you need to add the required application settings into the configuration for the Azure API App. In this task, you use the advanced configuration editor in your API App to add in the configuration settings required to connect to and retrieve secrets from Key Vault.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```json
     [
@@ -447,7 +447,7 @@ Before deploying the Web API to Azure, you need to add the required application 
 In this task, you use Visual Studio to deploy the API project into an API App in Azure.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 To validate the API App is function property, add `/swagger` to the end of the URL in your browser's address bar (e.g., <https://contoso-api-jjbp34uowoybc.azurewebsites.net/swagger/>). This brings up the Swagger UI page of your API, which displays a list of the available API endpoints.
 
@@ -497,7 +497,7 @@ In this task, you generate a shared access signature (SAS) token for your storag
 In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy). You then use AzCopy to copy the PDF files from the "on-premises" location into the policies container in Azure storage.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 <https://aka.ms/downloadazcopy>.
 
@@ -528,7 +528,7 @@ Contoso has made some updates to prepare their applications, but there are some 
 In this task, you prepare your Azure Function App to work with your new Function by adding your storage account policies container URL and SAS token values to the Application Settings of your Function App, using the Azure Cloud Shell and Azure CLI.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```powershell
     az functionapp list -g <your-resource-group-name> --output table
@@ -556,7 +556,7 @@ In this task, you create some environment variables on your VM, which allows for
 In this task, you use Visual Studio to create an Azure Function. This Function serves as a serverless API for retrieving policy documents from Blob storage.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```csharp
     [FunctionName("PolicyDocs")]
@@ -580,7 +580,7 @@ In this task, you run your Function locally through the Visual Studio debugger, 
 > **IMPORTANT**: Internet Explorer on Windows Server 2008 R2 does not include functionality to open PDF documents. To view the downloaded policy documents in this task, you need to [download and install the Chrome browser](https://www.google.com/chrome/) on your VM.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```http
     http://localhost:7071/api/policies/{policyHolder}/{policyNumber}
@@ -607,7 +607,7 @@ In this task, you add Application Insights to your Function App in the Azure Por
 In this task, you add the URL of your Azure Function App to the Application settings configuration of your Web App.
 
 <details>
-	<summary>Reference:</summary>
+	<summary>Code Reference:</summary>
 
 ```powershell
     az functionapp list -g <your-resource-group-name> --output table
