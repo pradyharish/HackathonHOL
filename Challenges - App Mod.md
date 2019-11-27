@@ -235,18 +235,21 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 > The [Azure Database Migration Service](https://docs.microsoft.com/en-us/azure/dms/dms-overview) integrates some of the functionality of Microsoft existing tools and services to provide customers with a comprehensive, highly available database migration solution. The service uses the Data Migration Assistant to generate assessment reports that provide recommendations to guide you through the changes required prior to performing a migration. When you're ready to begin the migration process, Azure Database Migration Service performs all of the required steps.
 
-Reference (source):
+<details>
+	<summary>Reference: </summary>
+Source:
 - **Username**: Enter **WorkshopUser**
 - **Password**: Enter **Password.1!!**
 - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
-Reference (target):
+Target:
 - **Username**: Enter **demouser**
 - **Password**: Enter **Password.1!!**
 - **Connection properties**: Check Encrypt connection.
 
-
 - **Activity name**: Enter ContosoDataMigration.
+
+</details>
 
 
 ## Exercise 2: Post upgrade database enhancements
@@ -273,14 +276,18 @@ In this task, you enable [Dynamic Data Masking](https://docs.microsoft.com/sql/r
 
 > For example, a service representative at a call center may identify callers by several digits of their credit card number, but those data items should not be fully exposed to the service representative. A masking rule can be defined that masks all but the last four digits of any credit card number in the result set of any query. As another example, an appropriate data mask can be defined to protect personally identifiable information (PII) data, so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
 
-Reference (DB Engine):
+
+<details>
+	<summary>Reference:</summary>
+	
+DB Engine:
 - **Server name**: Paste the server name of your Azure SQL Database, as you've done previously.
 - **Authentication type**: Select SQL Server Authentication.
 - **Username**: Enter **demouser**
 - **Password**: Enter **Password.1!!**
 - **Remember password**: Check this box.
 
-Reference (Query):
+Query:
 ```sql
    USE [ContosoInsurance];
    GO
@@ -288,7 +295,7 @@ Reference (Query):
    CREATE USER DDMUser WITHOUT LOGIN;
    GRANT SELECT ON [dbo].[people] TO DDMUser;
 ```
-Reference:
+
 ```sql
     USE [ContosoInsurance];
     GO
@@ -297,7 +304,7 @@ Reference:
     SELECT * FROM [dbo].[people];
     REVERT;
 ```
-
+</details>
 
 ## Exercise 3: Configure Key Vault
 
@@ -322,22 +329,22 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 > **Important**: You must have rights within your Azure AD tenant to create applications and assign roles to complete this task.
 
 
-  Reference:
+<details>
+	<summary>Reference:</summary>
+
 ```powershell
     az account list --output table
 ```
 
 > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hack is not your default account, you may need to run `az account set --subscription <your-subscription-id>` after running the command above to set the appropriate account for the following Azure CLI commands, replacing `<your-subscription-id>` with the appropriate value from the output list above.
 
-
-
-  Reference: 
+Reference: 
 ```powershell
     $subscriptionId = "<your-subscription-id>"
     $resourceGroup = "<your-resource-group-name>"
     az ad sp create-for-rbac -n "contoso-apps" --role reader --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
 ```
-  Reference:
+Reference:
 ```json
     {
         "appId": "94ee2739-794b-4038-a378-573a5f52918c",
@@ -350,12 +357,16 @@ In this task, you use the Azure Cloud Shell and Azure Command Line Interface (CL
 
 > **Important**: Make sure you copy the output into a text editor, as the Azure Cloud Shell session eventually times out, and you won't have access to the output. The `appId` is used in the steps below to assign an access policy to Key Vault, and both the `appId` and `password` are used in the next exercise to add the configuration values to the web and API apps to allow them to read secrets from Key Vault.
 
+</details>
+
 
 ### Task 4: Assign the service principal access to Key Vault
 
 In this task, you assign the service principal you created above to a reader role on your resource group and add an access policy to Key Vault to allow it to view secrets stored there.
 
-  Reference:
+<details>
+	<summary>Reference:</summary>
+	
 ```powershell
     az keyvault list -g <your-resource-group-name> --output table
 ```
@@ -364,6 +375,7 @@ Reference:
 ```powershell
     az keyvault set-policy -n <your-key-vault-name> --spn http://contoso-apps --secret-permissions get list
 ```
+</details>
 
 ## Exercise 4: Deploy Web API into Azure App Services
 
