@@ -387,10 +387,13 @@ The developers at Contoso have been working toward migrating their apps to the c
 
 In this task, you open an RDP connection to the VM, and downloading a copy of the starter solution provided by Contoso. The application deployments are handled using Visual Studio 2019, installed on the VM.
 
-  Reference: 
+<details>
+	<summary>Reference: </summary>
 
 - **Username**: demouser
 - **Password**: Password.1!!
+
+</details>
 
 
 ### Task 2: Open starter solution with Visual Studio
@@ -417,7 +420,9 @@ In this task, you update the `Contoso.WebApi` project to use Azure Key Vault for
 
 Before deploying the Web API to Azure, you need to add the required application settings into the configuration for the Azure API App. In this task, you use the advanced configuration editor in your API App to add in the configuration settings required to connect to and retrieve secrets from Key Vault.
 
-  Reference:
+<details>
+	<summary>Reference:</summary>
+
 ```json
     [
         {
@@ -434,14 +439,16 @@ Before deploying the Web API to Azure, you need to add the required application 
         }
     ]
 ```
+</details>
 
 
 ### Task 5: Deploy the API to Azure
 
 In this task, you use Visual Studio to deploy the API project into an API App in Azure.
 
-  Reference: 
-  
+<details>
+	<summary>Reference:</summary>
+
 To validate the API App is function property, add `/swagger` to the end of the URL in your browser's address bar (e.g., <https://contoso-api-jjbp34uowoybc.azurewebsites.net/swagger/>). This brings up the Swagger UI page of your API, which displays a list of the available API endpoints.
 
     > **Note**: [Swagger UI](https://swagger.io/tools/swagger-ui/) automatically generates visual documentation for REST APIs following the OpenAPI Specification. It makes it easy for developers to visualize and interact with the API's endpoints without having any of the implementation logic in place.
@@ -460,6 +467,7 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "ApiUrl=https://$defaultHostName"
 ```
+</details>
 
 
 ### Task 2: Deploy web application to Azure
@@ -488,8 +496,9 @@ In this task, you generate a shared access signature (SAS) token for your storag
 
 In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy). You then use AzCopy to copy the PDF files from the "on-premises" location into the policies container in Azure storage.
 
-  Reference:
-  
+<details>
+	<summary>Reference:</summary>
+
 <https://aka.ms/downloadazcopy>.
 
 `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy` (On a 32-bit machine, change `Program Files (x86)` to `Program Files` ).
@@ -505,6 +514,7 @@ In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us
 ```bash
     AzCopy /Source:"C:\.\.\....\lab-files\policy-documents" /Dest:"https://contosojt7yc3zphxfda.blob.core.windows.net/policies" /DestKey:"XJT3us2KT1WQHAQBbeotrRCWQLZayFDNmhLHt3vl2miKOHeXasB7IUlw2+y4afH6R/03wbTiRK9SRqGXt9JVqQ==" /S
 ```
+</details>
 
 
 ## Exercise 7: Create serverless API for accessing PDFs
@@ -517,7 +527,9 @@ Contoso has made some updates to prepare their applications, but there are some 
 
 In this task, you prepare your Azure Function App to work with your new Function by adding your storage account policies container URL and SAS token values to the Application Settings of your Function App, using the Azure Cloud Shell and Azure CLI.
 
-Reference:
+<details>
+	<summary>Reference:</summary>
+
 ```powershell
     az functionapp list -g <your-resource-group-name> --output table
 ```
@@ -531,6 +543,7 @@ Reference:
     $storageSas = "<your-storage-account-sas-token>"
     az functionapp config appsettings set -n $functionAppName -g $resourceGroup --settings "PolicyStorageUrl=$storageUrl" "PolicyStorageSas=$storageSas"
 ```
+</details>
 
 ### Task 2: Add project environment variables
 
@@ -542,7 +555,9 @@ In this task, you create some environment variables on your VM, which allows for
 
 In this task, you use Visual Studio to create an Azure Function. This Function serves as a serverless API for retrieving policy documents from Blob storage.
 
-Reference:
+<details>
+	<summary>Reference:</summary>
+
 ```csharp
     [FunctionName("PolicyDocs")]
         public static async Task<IActionResult> Run(
@@ -556,6 +571,7 @@ Reference
 ```
 
 > **Note**: When the API is deployed to an Azure API App, `Environment.GetEnvironmentVariables()` looks for the specified values in the configured application settings.
+</details>
 
 ### Task 4: Test the function locally
 
@@ -563,7 +579,9 @@ In this task, you run your Function locally through the Visual Studio debugger, 
 
 > **IMPORTANT**: Internet Explorer on Windows Server 2008 R2 does not include functionality to open PDF documents. To view the downloaded policy documents in this task, you need to [download and install the Chrome browser](https://www.google.com/chrome/) on your VM.
 
-  Reference: 
+<details>
+	<summary>Reference:</summary>
+
 ```http
     http://localhost:7071/api/policies/{policyHolder}/{policyNumber}
 ```
@@ -571,6 +589,7 @@ In this task, you run your Function locally through the Visual Studio debugger, 
 ```http
     http://localhost:7071/api/policies/Acevedo/ACE5605VZZ2ACQ
 ```
+</details>
 
 
 ### Task 5: Deploy the function to your Azure Function App
@@ -587,7 +606,9 @@ In this task, you add Application Insights to your Function App in the Azure Por
 
 In this task, you add the URL of your Azure Function App to the Application settings configuration of your Web App.
 
-  Reference: 
+<details>
+	<summary>Reference:</summary>
+
 ```powershell
     az functionapp list -g <your-resource-group-name> --output table
 ```
@@ -606,6 +627,8 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "PolicyDocumentsPath=https://$defaultHostName/api/policies/{policyHolder}/{policyNumber}?code=$defaultHostKey"
 ```
+</details>
+
 ### Task 8: Test document retrieval from web app
 
 In this task, you open the PolicyConnect web app and download a policy document. Recall from above that this resulted in a page not found error when you tried it previously.
@@ -627,7 +650,9 @@ Contoso has requested the ability to perform full-text searching on policy docum
 
 In this task, you run a query against your search index to review the enrichments added by cognitive search to policy documents.
 
-Reference: 
+<details>
+	<summary>Code Reference:</summary>
+
 ```json
    {
         "@search.score": 1,
@@ -697,6 +722,7 @@ Reference:
         "metadata_title": "Your Policy"
    }
 ```
+</details>
 
 ## Exercise 8: Import and publish APIs into APIM
 
@@ -708,8 +734,9 @@ In this exercise, you publish your API App and Function App API endpoints throug
 
 In this task, you import your API App into APIM, using the OpenAPI specification, which leverages the Swagger definition associated with your API app.
 
-  Reference: 
-  
+<details>
+	<summary>Code Reference:</summary>
+
 <https://contoso-api-jt7yc3zphxfda.azurewebsites.net/swagger>
 
 Reference: 
@@ -732,6 +759,7 @@ Reference:
 
 > **Note**: The policy added above is for handling cross-origin resource sharing (CORS). If you are testing the web app locally, you need to add another `<origin></origin>` tag within `<allowed-origins></allowed-origins>` that contains `https://localhost:<port-number>`, where `<port-number>` is the port assigned by your debugger (as is shown in the screenshot above).
 
+</details>
 
 
 ### Task 2: Import Function App
@@ -748,7 +776,8 @@ In this task, you quickly look at the APIs in the Developer Portal, and retrieve
 
 In this task, you use the Azure Cloud Shell and Azure CLI to update the `ApiUrl` and `PolicyDocumentsPath` settings for the PolicyConnect Web App. You also add a new setting for the APIM access key.
 
-  Reference: 
+<details>
+	<summary>Code Reference:</summary>
 
 ```powershell
     az webapp list -g <your-resource-group-name> --output table
@@ -764,6 +793,8 @@ Reference:
     $resourceGroup = "<your-resource-group-name>"
     az webapp config appsettings set -n $webAppName -g $resourceGroup --settings "PolicyDocumentsPath=$policyDocsPath" "ApiUrl=$apimUrl" "ApimSubscriptionKey=$apimKey"
 ```
+
+</details>
 
 
 ## Exercise 9: Create an app in PowerApps
@@ -784,14 +815,17 @@ Since creating mobile apps is a long development cycle, Contoso is interested in
 
 ### Task 2: Create new SQL connection
 
-  Reference: 
-  
+<details>
+	<summary>Reference:</summary>
+
 
 - **Authentication Type**: Select **SQL Server Authentication**.
 - **SQL Server name**: Enter the server name of your Azure SQL database. For example, `contosoinsurance-jjbp34uowoybc.database.windows.net`.
 - **SQL Database name**: Enter **ContosoInsurance**
 - **Username**: Enter **demouser**
 - **Password**: Enter **Password.1!!**
+
+</details>
 
 
 ### Task 3: Create a new app
